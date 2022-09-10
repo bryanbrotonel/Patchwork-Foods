@@ -1,8 +1,8 @@
 import React from 'react';
-import NavRoutes from './navRoutes';
+import SignUp from './pages/SignUp';
 
 function App() {
-  return <NavRoutes />;
+  return <SignUp />;
 }
 
 export default App;
