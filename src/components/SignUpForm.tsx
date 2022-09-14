@@ -78,11 +78,14 @@ function SignUpForm() {
           value="Sign Up"
           onClick={(e) => onFormSubmit(e)}
           className="border border-black py-1 px-3 hover:cursor-pointer hover:bg-black hover:text-white"
+          data-testid="submit"
         />
       </form>
       <div>
         {emailError.map((error, index) => (
-          <p key={index}>{error}</p>
+          <p key={index} data-testid="inputErrorMessage">
+            {error}
+          </p>
         ))}
       </div>
     </div>

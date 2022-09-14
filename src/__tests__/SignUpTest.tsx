@@ -4,25 +4,35 @@
 
 import React from 'react';
 import { expect } from '@jest/globals';
-import { render } from '@testing-library/react';
-import SignUp from '../pages/SignUp';
+import { act, render, fireEvent } from '@testing-library/react';
+import SignUpForm from '../components/SignUpForm';
+import '@testing-library/jest-dom/extend-expect';
 
-describe('Sign Up', () => {
-  test('Verify Email', async () => {
-    const signUp = render(<SignUp />);
-    const emailInput = signUp.getByTestId('email') as HTMLInputElement;
+test('Verify form input error message', async () => {
+  const signUp = render(<SignUpForm />);
 
-    expect(emailInput.value).toMatch(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
+  const emailInput = (await signUp.getByTestId('email')) as HTMLInputElement;
+  const postalCodeInput = (await signUp.getByTestId(
+    'postalCode'
+  )) as HTMLInputElement;
+  const submitButton = await signUp.getByTestId('submit');
+
+  act(() => {
+    submitButton.click();
   });
 
-  test('Verify Canadian Postal Code', async () => {
-    const signUp = render(<SignUp />);
-    const postalCodeInput = signUp.getByTestId(
-      'postalCode'
-    ) as HTMLInputElement;
+  var errorMessage = signUp.getAllByTestId('inputErrorMessage');
 
-    expect(postalCodeInput.value).toMatch(
-      /^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ -]?\d[ABCEGHJ-NPRSTV-Z]\d$/i
-    );
+  expect(errorMessage.length).toBe(2);
+  expect(errorMessage[0].textContent).toBe('Email is required');
+  expect(errorMessage[1].textContent).toBe('Postal Code is required');
+
+  act(() => {
+    fireEvent.change(emailInput, { target: { value: 'badEmail' } });
+    fireEvent.change(postalCodeInput, { target: { value: 'A1A1A1A' } });
+    fireEvent(submitButton, new MouseEvent('click', { bubbles: true }));
   });
+
+  errorMessage = signUp.getAllByTestId('inputErrorMessage');
+
 });
