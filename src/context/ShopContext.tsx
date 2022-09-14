@@ -1,15 +1,19 @@
 import React, { createContext, ReactNode, useState } from 'react';
 
 interface AppContextInterface {
-  cart: any[];
-  setCart: (cart: any[]) => void;
+  items: {};
+  setItems: (items: {}) => void;
+  total: number;
+  setTotal: (total: number) => void;
   displayShop: boolean;
   setDisplayShop: (displayShop: boolean) => void;
 }
 
 const initialAppContext: AppContextInterface = {
-  cart: [],
-  setCart: () => {},
+  items: [],
+  setItems: () => {},
+  total: 0,
+  setTotal: () => {},
   displayShop: true,
   setDisplayShop: () => {},
 };
@@ -18,10 +22,15 @@ export const ShopContext =
   createContext<AppContextInterface>(initialAppContext);
 
 export const ShopContextProvider = (props: { children: ReactNode }) => {
-  const [cart, setCart] = useState(initialAppContext.cart);
+  const [items, setItems] = useState(initialAppContext.items);
+  const [total, setTotal] = useState(initialAppContext.total);
   const [displayShop, setDisplayShop] = useState(initialAppContext.displayShop);
 
-  const cartContextValue = React.useMemo(() => ({ cart, setCart }), [cart]);
+  const itemsContextValue = React.useMemo(
+    () => ({ items, setItems }),
+    [items]
+    );
+    const totalContextValue = React.useMemo(() => ({ total, setTotal }), [total]);
   const displayShopContextValue = React.useMemo(
     () => ({ displayShop, setDisplayShop }),
     [displayShop]
@@ -29,7 +38,11 @@ export const ShopContextProvider = (props: { children: ReactNode }) => {
 
   return (
     <ShopContext.Provider
-      value={{ ...cartContextValue, ...displayShopContextValue }}
+      value={{
+        ...itemsContextValue,
+        ...displayShopContextValue,
+        ...totalContextValue,
+      }}
     >
       {props.children}
     </ShopContext.Provider>
