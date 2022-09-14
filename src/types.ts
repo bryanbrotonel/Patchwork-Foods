@@ -1,16 +1,14 @@
 export interface TypeCartItem {
-  [key: number]: {
-    id: number;
-    name: string;
-    price: string;
-    quantity: number;
-  };
+  id: number;
+  name: string;
+  price: number;
+  quantity: number;
 }
 
 export interface TypeShopItem {
   id: number;
   name: string;
-  price: string;
+  price: number;
   image: string;
   description: string;
 }

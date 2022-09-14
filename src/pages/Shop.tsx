@@ -34,7 +34,7 @@ function Shop() {
             {
               id: id,
               name: title,
-              price: price,
+              price: parseInt(price),
               image: src,
               description: description,
             } as TypeShopItem
