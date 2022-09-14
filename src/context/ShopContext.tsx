@@ -10,7 +10,7 @@ interface AppContextInterface {
 const initialAppContext: AppContextInterface = {
   cart: [],
   setCart: () => {},
-  displayShop: false,
+  displayShop: true,
   setDisplayShop: () => {},
 };
 

@@ -6,7 +6,11 @@ import SignUp from './pages/SignUp';
 function App() {
   const useShopContext = useContext(ShopContext);
 
-  return useShopContext.displayShop ? <Shop /> : <SignUp />;
+  return (
+    <div className="h-screen w-screen">
+     {useShopContext.displayShop ? <Shop /> : <SignUp />}
+    </div>
+  );
 }
 
 export default App;
