@@ -1,8 +1,16 @@
-export interface CartItem {
+export interface TypeCartItem {
   [key: number]: {
     id: number;
     name: string;
-    price: number;
+    price: string;
     quantity: number;
   };
+}
+
+export interface TypeShopItem {
+  id: number;
+  name: string;
+  price: string;
+  image: string;
+  description: string;
 }

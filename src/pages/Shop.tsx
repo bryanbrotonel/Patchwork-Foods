@@ -1,96 +1,67 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { ShopContext } from '../context/ShopContext';
-import { CartItem } from '../types';
+import { TypeShopItem } from '../types';
+import ShopItem from '../components/ShopItem';
 
 import productData from '../data/products.json';
+import ShopCart from '../components/ShopCart';
 
 function Shop() {
   const useShopContext = useContext(ShopContext);
-  const { items, setItems, total, setTotal } = useShopContext;
+  const { items, total } = useShopContext;
 
   const formatter = new Intl.NumberFormat('en-CA', {
     style: 'currency',
     currency: 'CAD',
   });
 
-  const addProduct = (id: number, name: string, price: string) => {
-    if (id in items) {
-      var updatedCart: CartItem = { ...items };
-      updatedCart[id].quantity += 1;
-      setItems(updatedCart);
-      setTotal(total + parseInt(price));
-    } else {
-      const newCartItem = {
-        id: id,
-        name: name,
-        price: price,
-        quantity: 1,
-      };
-      setItems({ ...items, [id]: newCartItem });
-      setTotal(total + parseFloat(price));
-    }
-  };
+  let productGrid = productData.products.map((product) => {
+    const {
+      title,
+      body_html,
+      image: { src },
+      variants,
+    } = product;
+
+    const price = variants[0].price;
+    const id = variants[0].product_id;
+    const description = body_html.replace(/(<([^>]+)>)/gi, '');
+
+    return (
+      <div key={id} className="basis-1/4">
+        <ShopItem
+          item={
+            {
+              id: id,
+              name: title,
+              price: price,
+              image: src,
+              description: description,
+            } as TypeShopItem
+          }
+        />
+      </div>
+    );
+  });
 
   return (
-    <div className="h-full flex flex-row justify-evenly mx-8 py-24">
-      <div className="basis-96 md:basis-2/4">
-        <div>
-          <h1>Shop</h1>
+    <div className="flex flex-row justify-evenly my-24">
+      <div className="basis-1/2">
+        <div className="mb-12">
+          <h1 className="text-3xl font-serif">Shop</h1>
+          <h2>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti,
+            repellat aliquid.
+          </h2>
         </div>
         <div>
           <div className="flex flex-wrap gap-4 justify-between">
-            {productData.products.map((product, index) => {
-              const {
-                title,
-                body_html,
-                image: { src },
-                variants,
-              } = product;
-              const price = variants[0].price;
-              const id = variants[0].product_id;
-
-              const description = body_html.replace(/(<([^>]+)>)/gi, '');
-
-              return (
-                <div key={id} className="basis-1/4">
-                  <div className="bg-slate-300 text-black rounded shadow-md">
-                    <img src={src} alt="" className="h-24 w-auto" />
-                    <h1>{title}</h1>
-                    <p>{formatter.format(parseInt(price))}</p>
-                    <p>{description}</p>
-                  </div>
-                  <button
-                    onClick={() => addProduct(id, title, price)}
-                    className="w-full bg-orange-300 p-2 mt-4 rounded"
-                  >
-                    Add to cart
-                  </button>
-                </div>
-              );
-            })}
+            {productGrid}
           </div>
         </div>
       </div>
-      <div className="relative basis-96 md:basis-1/4 h-full flex flex-col border border-black p-6">
-        <div className="text-center mb-4 w-full border border-black">
-          <h1>Cart</h1>
-        </div>
-        <div className="relative overflow-auto h-full">
-          <div className="flex flex-col gap-3 grow">
-            {Object.values(items).map((item: any) => (
-              <div className="text-black bg-blue-100 p-4" key={item.id}>
-                <p>ID: {item.id}</p>
-                <p>Name: {item.name}</p>
-                <p>Price: {formatter.format(item.price)}</p>
-                <p>Quantity: {item.quantity}</p>
-              </div>
-            ))}
-          </div>
-          <div className="sticky inset-x-0 bottom-0 h-12 bg-gradient-to-t from-white" />
-        </div>
-        <div className="py-4">
-          <h1>Total: {formatter.format(total)}</h1>
-        </div>
+      <div className="sticky top-24 basis-1/4 md:basis-80 max-h-[48rem]">
+        <ShopCart items={items} total={formatter.format(total)} />
       </div>
     </div>
   );
