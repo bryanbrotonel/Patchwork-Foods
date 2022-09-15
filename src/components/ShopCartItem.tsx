@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { ShopContext } from '../context/ShopContext';
-import { TypeCartItem, TypeShopItem } from '../types';
+import { TypeCartItem } from '../types';
 
 function ShopCartItem(props: { item: TypeCartItem }) {
   const { item } = props;
@@ -21,6 +21,7 @@ function ShopCartItem(props: { item: TypeCartItem }) {
   });
 
   const updateProduct = (newQuantity: number) => {
+
     if (newQuantity === 0) {
       var updatedCart: { [key: number]: TypeCartItem } = { ...items };
       delete updatedCart[id];
@@ -29,12 +30,11 @@ function ShopCartItem(props: { item: TypeCartItem }) {
       setTotal(total - price * parseInt(quantityField));
     } else if (newQuantity > 0) {
       var updatedCart: { [key: number]: TypeCartItem } = { ...items };
+      var previousQuantity = updatedCart[id]['quantity'];
       updatedCart[id].quantity = newQuantity;
       var productPrice = price;
       var newTotal =
-        total -
-        productPrice * parseInt(quantityField) +
-        productPrice * newQuantity;
+        total - productPrice * previousQuantity + productPrice * newQuantity;
 
       setQuantityField(String(newQuantity));
       setItems(updatedCart);

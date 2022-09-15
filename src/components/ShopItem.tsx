@@ -26,10 +26,14 @@ function ShopItem(props: ShopItemProps) {
         <h1>{name}</h1>
         <p>{formatter.format(price)}</p>
         <p>{description}</p>
+        <button onClick={() => setDisplayModal(true)}>More Info</button>
       </div>
       <div>
         <AddToCartButton item={props.item} />
       </div>
+      {displayModal && (
+        <ShopItemModal item={props.item} setDisplayModal={setDisplayModal} />
+      )}
     </div>
   );
 }
