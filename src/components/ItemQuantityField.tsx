@@ -71,7 +71,7 @@ function ItemQuantityField(props: { item: TypeCartItem }) {
     <div className="text-lg flex flex-row justify-center items-center gap-4">
       <div>
         <button
-          className="bg-primary hover:bg-primary/80 px-2 text-white font-bold rounded"
+          className="bg-primary hover:bg-primaryDark px-2 text-white font-bold rounded"
           onClick={() => updateProduct(parseInt(quantityField) - 1)}
         >
           -
@@ -91,7 +91,7 @@ function ItemQuantityField(props: { item: TypeCartItem }) {
       </div>
       <div>
         <button
-          className="bg-primary hover:bg-primary/80 px-2 text-white font-bold rounded"
+          className="bg-primary hover:bg-primaryDark px-2 text-white font-bold rounded"
           onClick={() => updateProduct(parseInt(quantityField) + 1)}
         >
           +

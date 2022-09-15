@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { SignUpContext } from '../context/SignUpContext';
-import {ShopContext} from '../context/ShopContext'
+import { ShopContext } from '../context/ShopContext';
 
 function SignUpForm() {
   const [emailInput, setEmailInput] = useState('');
@@ -11,7 +11,7 @@ function SignUpForm() {
   const useShopContext = useContext(ShopContext);
 
   const { setEmail, setPostalCode } = useSignUpContext;
-  const {setDisplayShop} = useShopContext;
+  const { setDisplayShop } = useShopContext;
 
   const onFormSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -54,9 +54,12 @@ function SignUpForm() {
 
   return (
     <div>
-      <form className="space-x-4">
+      <h1 className="font-serif font-bold text-5xl text-primary mb-12">
+        Sign Up
+      </h1>
+      <form className="w-96 flex flex-col gap-8">
         <input
-          className="border border-black px-2"
+          className="bg-gray-100 border border-gray-200 p-3 rounded-md"
           value={emailInput}
           placeholder="Email"
           onChange={(event) => setEmailInput(event.target.value)}
@@ -66,28 +69,32 @@ function SignUpForm() {
           id="email"
         />
         <input
-          className="border border-black px-2"
+          className="bg-gray-100 border border-gray-200 p-3 rounded-md"
           value={postalCodeInput}
           placeholder="Postal Code"
           onChange={(event) => setPostalCodeInput(event.target.value)}
           type="text"
           data-testid="postalCode"
         />
+        <div>
+          {emailError.map((error, index) => (
+            <p
+              className="text-red-500"
+              key={index}
+              data-testid="inputErrorMessage"
+            >
+              {error}
+            </p>
+          ))}
+        </div>
         <input
           type="submit"
           value="Sign Up"
           onClick={(e) => onFormSubmit(e)}
-          className="border border-black py-1 px-3 hover:cursor-pointer hover:bg-black hover:text-white"
+          className="py-2 px-3 font-sans font-medium text-xl bg-primary hover:bg-primaryDark text-white rounded-lg hover:cursor-pointer"
           data-testid="submit"
         />
       </form>
-      <div>
-        {emailError.map((error, index) => (
-          <p key={index} data-testid="inputErrorMessage">
-            {error}
-          </p>
-        ))}
-      </div>
     </div>
   );
 }

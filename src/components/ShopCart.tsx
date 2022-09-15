@@ -28,7 +28,7 @@ function ShopCart(props: { items: {}; total: string }) {
         <h1 className="font-medium text-2xl text-right">Total: {total}</h1>
       </div>
       <div className="pt-4">
-        <button className="w-full rounded p-2 py-3 font-medium bg-primary hover:bg-primary/80 text-white">
+        <button className="w-full rounded p-2 py-3 font-medium bg-primary hover:bg-primaryDark text-white">
           Checkout
         </button>
       </div>
