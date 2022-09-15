@@ -5,7 +5,8 @@ import { ShopContext } from '../context/ShopContext';
 function SignUpForm() {
   const [emailInput, setEmailInput] = useState('');
   const [postalCodeInput, setPostalCodeInput] = useState('');
-  const [emailError, setEmailError] = useState<String[]>([]);
+  const [emailError, setEmailError] = useState('');
+  const [postalCodeError, setPostalCodeError] = useState('');
 
   const useSignUpContext = useContext(SignUpContext);
   const useShopContext = useContext(ShopContext);
@@ -24,32 +25,34 @@ function SignUpForm() {
   };
 
   const validateForm = (emailInput: String, postalCodeInput: String) => {
-    let errors = [];
+    let emailErrorMessage = '';
+    let postalCodeErrorMessage = '';
 
     // Validate email
     if (emailInput === '') {
-      errors.push('Email is required');
+      emailErrorMessage = 'Email is required';
     } else if (!emailInput.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)) {
-      errors.push('Email is invalid');
+      emailErrorMessage = 'Email is invalid';
     }
 
     // Validate postal code
     if (postalCodeInput === '') {
-      errors.push('Postal Code is required');
+      postalCodeErrorMessage = 'Postal Code is required';
     } else if (
       !postalCodeInput.match(
         /^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ -]?\d[ABCEGHJ-NPRSTV-Z]\d$/i
       )
     ) {
-      errors.push('Postal Code is invalid');
+      postalCodeErrorMessage = 'Postal Code is invalid';
     }
 
-    if (errors.length > 0) {
-      setEmailError(errors);
+    if (emailErrorMessage || postalCodeErrorMessage) {
+      setEmailError(emailErrorMessage);
+      setPostalCodeError(postalCodeErrorMessage);
       return false;
-    } else {
-      return true;
     }
+
+    return true;
   };
 
   return (
@@ -59,33 +62,26 @@ function SignUpForm() {
       </h1>
       <form className="w-96 flex flex-col gap-6">
         <input
-          className="bg-gray-100 border border-gray-200 p-3 rounded-md"
+          className={`inputField ${emailError && 'border-red-500'}`}
           value={emailInput}
           placeholder="Email"
           onChange={(event) => setEmailInput(event.target.value)}
           type="email"
-          name="email"
           data-testid="email"
-          id="email"
         />
         <input
-          className="bg-gray-100 border border-gray-200 p-3 rounded-md"
+          className={`inputField ${postalCodeError && 'border-red-500'}`}
           value={postalCodeInput}
           placeholder="Postal Code"
           onChange={(event) => setPostalCodeInput(event.target.value)}
           type="text"
           data-testid="postalCode"
         />
-        <div className='h-12'>
-          {emailError.map((error, index) => (
-            <p
-              className="text-red-500"
-              key={index}
-              data-testid="inputErrorMessage"
-            >
-              {error}
-            </p>
-          ))}
+        <div className="h-12">
+          <div className="text-red-500">
+            {emailError !== '' && <p>{emailError}</p>}
+            {postalCodeError !== '' && <p>{postalCodeError}</p>}
+          </div>
         </div>
         <input
           type="submit"

@@ -14,9 +14,9 @@ function SignUp() {
           <img src={Ellipse} className="absolute -top-32 -right-24" />
           <img
             src={Rect}
-            className="absolute bottom-24 -right-32 rotate-12"
+            className="absolute bottom-36 -right-32 rotate-12"
           />
-          <img src={Ellipse} className="absolute -bottom-16 -left-28" />
+          <img src={Ellipse} className="absolute -bottom-8 -left-32" />
           <img
             src={Rect}
             className="absolute -top-32 left-0 rotate-45"

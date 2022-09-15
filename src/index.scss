@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .inputField {
+    @apply bg-gray-100 border border-gray-200 p-3 rounded-md;
+  }
+}
+
 html, body {
   background-color: #FFF3EA;
 }
