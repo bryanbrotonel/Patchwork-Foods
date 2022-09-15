@@ -22,7 +22,7 @@ function SignUp() {
             className="absolute -top-32 left-0 rotate-45"
           />
         </div>
-        <div className="w-1/2 grid place-items-center pb-24 bg-white container z-10">
+        <div className="w-1/2 grid place-items-center pb-24 bg-white container">
           <SignUpForm />
         </div>
       </div>
