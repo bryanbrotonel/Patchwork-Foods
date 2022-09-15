@@ -57,7 +57,7 @@ function SignUpForm() {
       <h1 className="font-serif font-bold text-5xl text-primary mb-12">
         Sign Up
       </h1>
-      <form className="w-96 flex flex-col gap-8">
+      <form className="w-96 flex flex-col gap-6">
         <input
           className="bg-gray-100 border border-gray-200 p-3 rounded-md"
           value={emailInput}
@@ -76,7 +76,7 @@ function SignUpForm() {
           type="text"
           data-testid="postalCode"
         />
-        <div>
+        <div className='h-12'>
           {emailError.map((error, index) => (
             <p
               className="text-red-500"
