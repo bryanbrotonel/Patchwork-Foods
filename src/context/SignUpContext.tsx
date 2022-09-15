@@ -8,9 +8,9 @@ interface AppContextInterface {
 }
 
 const initialAppContext: AppContextInterface = {
-  email: 'me@email.com',
+  email: '',
   setEmail: () => {},
-  postalCode: 'A1A 1A1',
+  postalCode: '',
   setPostalCode: () => {},
 };
 

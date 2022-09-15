@@ -2,6 +2,9 @@ import React, { useEffect, useRef } from 'react';
 import { TypeShopItem } from '../types';
 import AddToCartButton from './AddToCartButton';
 
+import {IoClose} from 'react-icons/io5';
+
+
 interface ModalProps {
   item: TypeShopItem;
   setDisplayModal: (value: boolean) => void;
@@ -59,8 +62,8 @@ function ShopItemModal(props: ModalProps) {
         <div className="relative basis-1/2 container">
           <div className="h-full flex flex-col">
             <div className="grid place-content-end">
-              <button className="p-3" onClick={() => setDisplayModal(false)}>
-                X
+              <button className="pt-3 pr-3 text-2xl" onClick={() => setDisplayModal(false)}>
+                <IoClose />
               </button>
             </div>
             <div className="grow flex flex-col justify-between p-5">

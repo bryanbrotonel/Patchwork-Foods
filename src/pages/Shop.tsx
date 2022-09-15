@@ -6,6 +6,8 @@ import ShopItem from '../components/ShopItem';
 import productData from '../data/products.json';
 import ShopCart from '../components/ShopCart';
 
+import { IoHeart } from 'react-icons/io5';
+
 import Logo from '../assets/images/Logo.svg';
 
 function Shop() {
@@ -51,8 +53,8 @@ function Shop() {
         <div className="basis-7/12">
           <div className="mb-12 space-y-8">
             <img src={Logo} className="w-80 max-w-lg" />
-            <h1 className="text-xl font-sans font-medium text-zinc-500">
-              Choose from healthy crafted meals.
+            <h1 className="text-lg font-sans font-medium text-black">
+              Create your healthy meal kit with our fresh ingredients and easy to follow recipes.
             </h1>
           </div>
           <div>
@@ -66,9 +68,13 @@ function Shop() {
         </div>
       </div>
       <div>
-        <h1 className="text-sm font-sans font-medium text-[#FFA35C] text-center mb-8">
-          Made with &lt;3 by{' '}
-          <a className="hover:text-primary" href="bryanbrotonel.live/">
+        <h1 className="font-sans font-medium text-[#FFA35C] text-center mb-8">
+          Made with&nbsp;
+          <div className="inline-block text-primary align-text-top">
+            <IoHeart />
+          </div>
+          &nbsp;by&nbsp;
+          <a className="hover:text-primary" href="https://bryanbrotonel.live/">
             Bryan Brotonel
           </a>
         </h1>

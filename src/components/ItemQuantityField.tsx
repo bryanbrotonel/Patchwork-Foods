@@ -2,6 +2,8 @@ import React, { useContext, useEffect } from 'react';
 import { ShopContext } from '../context/ShopContext';
 import { TypeCartItem } from '../types';
 
+import { IoAdd, IoRemove } from 'react-icons/io5';
+
 function ItemQuantityField(props: { item: TypeCartItem }) {
   const {
     item: { id, price, quantity },
@@ -68,13 +70,13 @@ function ItemQuantityField(props: { item: TypeCartItem }) {
   };
 
   return (
-    <div className="flex flex-row justify-center items-center gap-4">
+    <div className="flex text-sm flex-row justify-center items-baseline gap-4">
       <div>
         <button
-          className="bg-primary hover:bg-primaryDark px-2 text-white text-sm font-bold rounded"
+          className="bg-primary hover:bg-primaryDark p-1 text-white rounded"
           onClick={() => updateProduct(parseInt(quantityField) - 1)}
         >
-          -
+          <IoRemove />
         </button>
       </div>
       <div>
@@ -89,14 +91,12 @@ function ItemQuantityField(props: { item: TypeCartItem }) {
           />
         </form>
       </div>
-      <div>
-        <button
-          className="bg-primary hover:bg-primaryDark px-2 text-white text-sm font-bold rounded"
-          onClick={() => updateProduct(parseInt(quantityField) + 1)}
-        >
-          +
-        </button>
-      </div>
+      <button
+        className="bg-primary hover:bg-primaryDark p-1 text-white rounded"
+        onClick={() => updateProduct(parseInt(quantityField) + 1)}
+      >
+        <IoAdd />
+      </button>
     </div>
   );
 }

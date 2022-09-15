@@ -31,7 +31,7 @@ function ShopCart(props: { items: {}; total: string }) {
       <div className="pt-4">
         <button
           disabled={emptyCart}
-          className="w-full rounded p-2 py-3 font-medium bg-primary hover:bg-primaryDark disabled:bg-gray-400 text-white"
+          className="w-full rounded p-2 py-3 font-medium bg-primary hover:bg-primaryDark disabled:bg-zinc-400 text-white"
         >
           Checkout
         </button>
