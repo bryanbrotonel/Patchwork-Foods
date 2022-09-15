@@ -30,7 +30,7 @@ function ShopItem(props: ShopItemProps) {
               className="aspect-square w-full"
             />
           </div>
-          <div className="flex flex-col md:flex-row justify-between mb-4">
+          <div className="flex flex-col md:flex-row justify-between mb-6">
             <div className="basis-8/12">
               <h1 className="font-sans font-medium text-xl">{name}</h1>
             </div>
