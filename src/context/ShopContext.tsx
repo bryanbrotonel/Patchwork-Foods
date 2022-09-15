@@ -14,7 +14,7 @@ const initialAppContext: AppContextInterface = {
   setItems: () => {},
   total: 0,
   setTotal: () => {},
-  displayShop: true,
+  displayShop: false,
   setDisplayShop: () => {},
 };
 
