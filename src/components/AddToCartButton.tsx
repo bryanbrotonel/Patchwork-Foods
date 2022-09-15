@@ -6,7 +6,7 @@ function AddToCartButton(props: { item: TypeShopItem }) {
   const useShopContext = useContext(ShopContext);
   const { items, setItems, total, setTotal } = useShopContext;
 
-  const { id, name, price } = props.item;
+  const { id, name, price, image } = props.item;
 
   const addProduct = () => {
     if (id in items) {
@@ -20,6 +20,7 @@ function AddToCartButton(props: { item: TypeShopItem }) {
         name: name,
         price: price,
         quantity: 1,
+        image: image,
       } as TypeCartItem;
 
       setItems({ ...items, [id]: newCartItem });

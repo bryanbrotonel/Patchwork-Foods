@@ -3,6 +3,7 @@ export interface TypeCartItem {
   name: string;
   price: number;
   quantity: number;
+  image: string;
 }
 
 export interface TypeShopItem {

@@ -45,7 +45,7 @@ function Shop() {
   });
 
   return (
-    <div className="flex flex-row justify-evenly my-24">
+    <div className="flex flex-row justify-evenly py-24">
       <div className="basis-1/2">
         <div className="mb-12">
           <h1 className="text-3xl font-serif">Shop</h1>
@@ -60,7 +60,7 @@ function Shop() {
           </div>
         </div>
       </div>
-      <div className="sticky top-24 basis-1/4 md:basis-80 max-h-[48rem]">
+      <div className="sticky top-24 basis-1/4 md:basis-96 max-h-[50rem]">
         <ShopCart items={items} total={formatter.format(total)} />
       </div>
     </div>

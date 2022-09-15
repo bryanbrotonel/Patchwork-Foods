@@ -7,7 +7,7 @@ function App() {
   const useShopContext = useContext(ShopContext);
 
   return (
-    <div className="h-screen w-screen">
+    <div className="h-full w-full bg-background">
      {useShopContext.displayShop ? <Shop /> : <SignUp />}
     </div>
   );
