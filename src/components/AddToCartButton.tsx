@@ -31,7 +31,7 @@ function AddToCartButton(props: { item: TypeShopItem }) {
   return (
     <button
       onClick={addProduct}
-      className="w-full bg-orange-300 hover:bg-orange-300/80 p-2 mt-4 rounded"
+      className="w-full font-medium text-white bg-primary hover:bg-primaryDark p-2 rounded-lg"
     >
       Add To Cart
     </button>

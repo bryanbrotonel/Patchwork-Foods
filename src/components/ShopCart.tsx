@@ -4,16 +4,17 @@ import ShopCartItem from './ShopCartItem';
 function ShopCart(props: { items: {}; total: string }) {
   const { items, total } = props;
 
-  let cartComponent =
-    Object.keys(items).length === 0 ? (
-      <div className="text-zinc-400 text-center">Your cart is empty</div>
-    ) : (
-      Object.values(items).map((item: any) => (
-        <div key={item.id}>
-          <ShopCartItem item={item} />
-        </div>
-      ))
-    );
+  const emptyCart = Object.keys(items).length === 0;
+
+  let cartComponent = emptyCart ? (
+    <div className="text-zinc-400 text-center">Your cart is empty</div>
+  ) : (
+    Object.values(items).map((item: any) => (
+      <div key={item.id}>
+        <ShopCartItem item={item} />
+      </div>
+    ))
+  );
 
   return (
     <div className="h-5/6 flex flex-col p-10 bg-white rounded-3xl">
@@ -28,7 +29,10 @@ function ShopCart(props: { items: {}; total: string }) {
         <h1 className="font-medium text-2xl text-right">Total: {total}</h1>
       </div>
       <div className="pt-4">
-        <button className="w-full rounded p-2 py-3 font-medium bg-primary hover:bg-primaryDark text-white">
+        <button
+          disabled={emptyCart}
+          className="w-full rounded p-2 py-3 font-medium bg-primary hover:bg-primaryDark disabled:bg-gray-400 text-white"
+        >
           Checkout
         </button>
       </div>

@@ -5,8 +5,6 @@ import Logo from '../assets/images/Logo.svg';
 import Ellipse from '../assets/images/Ellipse.svg';
 import Rect from '../assets/images/Rect.svg';
 
-// const logo = new URL('../assets/images/Logo.svg');
-
 function SignUp() {
   return (
     <div className="w-screen h-screen">

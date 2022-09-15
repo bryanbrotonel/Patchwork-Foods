@@ -68,10 +68,10 @@ function ItemQuantityField(props: { item: TypeCartItem }) {
   };
 
   return (
-    <div className="text-lg flex flex-row justify-center items-center gap-4">
+    <div className="flex flex-row justify-center items-center gap-4">
       <div>
         <button
-          className="bg-primary hover:bg-primaryDark px-2 text-white font-bold rounded"
+          className="bg-primary hover:bg-primaryDark px-2 text-white text-sm font-bold rounded"
           onClick={() => updateProduct(parseInt(quantityField) - 1)}
         >
           -
@@ -85,13 +85,13 @@ function ItemQuantityField(props: { item: TypeCartItem }) {
             value={quantityField}
             onChange={(e) => setQuantityField(e.target.value)}
             onBlur={(e) => onHandleUpdate(e)}
-            className="w-8 bg-transparent text-center focus:outline-none"
+            className="w-8 bg-transparent text-center text-lg focus:outline-none"
           />
         </form>
       </div>
       <div>
         <button
-          className="bg-primary hover:bg-primaryDark px-2 text-white font-bold rounded"
+          className="bg-primary hover:bg-primaryDark px-2 text-white text-sm font-bold rounded"
           onClick={() => updateProduct(parseInt(quantityField) + 1)}
         >
           +
