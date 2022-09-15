@@ -21,7 +21,7 @@ function ShopItem(props: ShopItemProps) {
 
   return (
     <React.Fragment>
-      <div className="basis-[30%] flex flex-col justify-between text-black bg-white p-5 rounded-lg">
+      <div className="basis-[30%] flex flex-col justify-between text-black bg-white p-5 rounded-lg shadow-lg">
         <div>
           <div className="w-full aspect-square bg-gray-200 p-3 mb-3 rounded-lg">
             <img

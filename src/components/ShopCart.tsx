@@ -17,7 +17,7 @@ function ShopCart(props: { items: {}; total: string }) {
   );
 
   return (
-    <div className="h-5/6 flex flex-col p-10 bg-white rounded-3xl">
+    <div className="h-5/6 flex flex-col p-10 bg-white rounded-3xl shadow-lg">
       <div className="text-center mb-8">
         <h1 className="font-serif font-bold text-3xl text-primary">Cart</h1>
       </div>

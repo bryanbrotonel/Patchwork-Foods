@@ -46,22 +46,32 @@ function Shop() {
   });
 
   return (
-    <div className="flex flex-row justify-evenly py-24">
-      <div className="basis-7/12">
-        <div className="mb-12 space-y-8">
-          <img src={Logo} className="w-80 max-w-lg" />
-          <h1 className="text-xl font-sans font-medium text-zinc-500">
-            Choose from healthy crafted meals.
-          </h1>
-        </div>
-        <div>
-          <div className="flex flex-wrap gap-y-12 justify-between items-stretch">
-            {productGrid}
+    <div>
+      <div className="flex flex-row justify-evenly my-16">
+        <div className="basis-7/12">
+          <div className="mb-12 space-y-8">
+            <img src={Logo} className="w-80 max-w-lg" />
+            <h1 className="text-xl font-sans font-medium text-zinc-500">
+              Choose from healthy crafted meals.
+            </h1>
+          </div>
+          <div>
+            <div className="flex flex-wrap gap-y-12 justify-between items-stretch">
+              {productGrid}
+            </div>
           </div>
         </div>
+        <div className="sticky top-24 basis-1/4 md:basis-96 max-h-[50rem]">
+          <ShopCart items={items} total={formatter.format(total)} />
+        </div>
       </div>
-      <div className="sticky top-24 basis-1/4 md:basis-96 max-h-[50rem]">
-        <ShopCart items={items} total={formatter.format(total)} />
+      <div>
+        <h1 className="text-sm font-sans font-medium text-[#FFA35C] text-center mb-8">
+          Made with &lt;3 by{' '}
+          <a className="hover:text-primary" href="bryanbrotonel.live/">
+            Bryan Brotonel
+          </a>
+        </h1>
       </div>
     </div>
   );
