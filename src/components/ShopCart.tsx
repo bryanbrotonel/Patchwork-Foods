@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ShopContext } from '../context/ShopContext';
 import ShopCartItem from './ShopCartItem';
 
 function ShopCart(props: { items: {}; total: string }) {
   const { items, total } = props;
+
+  const useShopContext = useContext(ShopContext);
+  const { setDisplayThankYou } = useShopContext;
 
   const emptyCart = Object.keys(items).length === 0;
 
@@ -15,6 +19,11 @@ function ShopCart(props: { items: {}; total: string }) {
       </div>
     ))
   );
+
+  const processCheckout = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    setDisplayThankYou(true);
+  };
 
   return (
     <div className="h-5/6 flex flex-col p-10 bg-white rounded-3xl shadow-lg">
@@ -30,6 +39,7 @@ function ShopCart(props: { items: {}; total: string }) {
       </div>
       <div className="pt-4">
         <button
+          onClick={(e) => processCheckout(e)}
           disabled={emptyCart}
           className="w-full rounded p-2 py-3 font-medium bg-primary hover:bg-primaryDark disabled:bg-zinc-400 text-white"
         >

@@ -5,7 +5,7 @@ import ItemQuantityField from './ItemQuantityField';
 
 function ShopCartItem(props: { item: TypeCartItem }) {
   const { item } = props;
-  const { id, name, price, quantity, image } = item;
+  const { name, price, image } = item;
 
   const formatter = new Intl.NumberFormat('en-CA', {
     style: 'currency',
@@ -24,7 +24,7 @@ function ShopCartItem(props: { item: TypeCartItem }) {
       <div className="basis-3/5 text-lg">
         <div className="mb-4 text-end">
           <h1 className="font-medium mb-2">{name}</h1>
-          <span className='text-zinc-500'>{formatter.format(price)}</span>
+          <span className="text-zinc-500">{formatter.format(price)}</span>
         </div>
         <div className="flex flex-row justify-end">
           <ItemQuantityField item={item} />

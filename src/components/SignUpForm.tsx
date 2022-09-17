@@ -60,7 +60,10 @@ function SignUpForm() {
       <h1 className="font-serif font-bold text-5xl text-primary mb-12">
         Sign Up
       </h1>
-      <form className="w-96 flex flex-col gap-6">
+      <form
+        onSubmit={(e) => onFormSubmit(e)}
+        className="w-96 flex flex-col gap-6"
+      >
         <input
           className={`inputField ${emailError && 'border-red-500'}`}
           value={emailInput}
