@@ -49,10 +49,10 @@ function ShopItemModal(props: ModalProps) {
       onKeyDown={handleKeyPress}
     >
       <div
-        className="flex flex-row bg-white rounded-lg overflow-hidden"
+        className="flex flex-row bg-white rounded-lg overflow-hidden w-11/12 md:w-1/2"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="basis-1/2 w-96 h-full bg-gray-200 p-3">
+        <div className="basis-1/2 bg-gray-200 p-3">
           <img
             src={image}
             alt={`${name} - Product Image`}
@@ -62,7 +62,10 @@ function ShopItemModal(props: ModalProps) {
         <div className="relative basis-1/2 container">
           <div className="h-full flex flex-col">
             <div className="grid place-content-end">
-              <button className="pt-3 pr-3 text-2xl" onClick={() => setDisplayModal(false)}>
+              <button
+                className="pt-3 pr-3 text-2xl"
+                onClick={() => setDisplayModal(false)}
+              >
                 <IoClose />
               </button>
             </div>

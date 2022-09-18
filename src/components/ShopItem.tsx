@@ -44,7 +44,7 @@ function ShopItem(props: ShopItemProps) {
             </div>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row justify-between items-center">
+        <div className="flex flex-col lg:flex-row gap-x-2 justify-between items-center">
           <span className="text-lg text-zinc-500">
             {formatter.format(price)}
           </span>
