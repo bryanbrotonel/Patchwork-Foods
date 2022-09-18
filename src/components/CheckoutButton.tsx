@@ -24,7 +24,7 @@ function CheckoutButton(props: { disabled: boolean }) {
   };
 
   const sendOrderEmail = async () => {
-    await fetch('/api/.netlify/functions/orderEmail', {
+    await fetch('/.netlify/functions/orderEmail', {
       method: 'POST',
       body: JSON.stringify({ payload: { items, total, email, postalCode } }),
     });
