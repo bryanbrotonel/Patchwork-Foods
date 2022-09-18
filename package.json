@@ -28,7 +28,9 @@
   },
   "homepage": "https://github.com/bryanbrotonel/Patchwork-Foods#readme",
   "devDependencies": {
+    "@parcel/packager-raw-url": "^2.7.0",
     "@parcel/transformer-sass": "^2.7.0",
+    "@parcel/transformer-webmanifest": "^2.7.0",
     "@tailwindcss/line-clamp": "^0.4.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

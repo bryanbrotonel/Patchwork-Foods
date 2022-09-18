@@ -21,8 +21,6 @@ function SignUpForm() {
       setEmail(emailInput);
       setPostalCode(postalCodeInput);
 
-      console.log('email', emailInput);
-      console.log('postalCode', postalCodeInput);
       setDisplayShop(true);
     }
   };

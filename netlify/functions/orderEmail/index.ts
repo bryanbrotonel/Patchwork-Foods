@@ -15,7 +15,6 @@ const readHTMLFilePromise = async (path: string) => {
 
 // Send email
 const sendEmailPromise = async (cartData) => {
-  console.log('cartData', cartData);
   const { email, postalCode, items, total } = cartData;
 
   const html = await readHTMLFilePromise(

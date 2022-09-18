@@ -18,7 +18,6 @@ function ThankYou() {
 
   const onContinueShopping = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    console.log('Continue Shopping');
     setDisplayThankYou(false);
     setItems({});
     setTotal(0);
