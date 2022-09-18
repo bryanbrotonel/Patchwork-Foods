@@ -1,20 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { ShopContext } from '../context/ShopContext';
 import { SignUpContext } from '../context/SignUpContext';
 
 import {GiPartyPopper} from 'react-icons/gi';
 
 function ThankYou() {
+
+    useEffect(() => {
+    document.title = 'Thank You! | Patchwork Foods';
+  }, []);
+  
   const useShopContext = useContext(ShopContext);
   const useSignUpContext = useContext(SignUpContext);
 
   const { setDisplayThankYou, setItems, setTotal } = useShopContext;
   const { email } = useSignUpContext;
-
-  const formatter = new Intl.NumberFormat('en-CA', {
-    style: 'currency',
-    currency: 'CAD',
-  });
 
   const onContinueShopping = (e: React.SyntheticEvent) => {
     e.preventDefault();

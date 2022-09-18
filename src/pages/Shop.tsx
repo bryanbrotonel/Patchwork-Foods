@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { ShopContext } from '../context/ShopContext';
 import { TypeShopItem } from '../types';
 import ShopItem from '../components/ShopItem';
@@ -12,6 +12,11 @@ import Logo from '../assets/images/Logo.svg';
 
 function Shop() {
   const useShopContext = useContext(ShopContext);
+
+  useEffect(() => {
+    document.title = 'Shop | Patchwork Foods';
+  }, []);
+  
   const { items, total } = useShopContext;
 
   const formatter = new Intl.NumberFormat('en-CA', {

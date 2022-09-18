@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import SignUpForm from '../components/SignUpForm';
 
 import Logo from '../assets/images/Logo.svg';
@@ -6,6 +6,11 @@ import Ellipse from '../assets/images/Ellipse.svg';
 import Rect from '../assets/images/Rect.svg';
 
 function SignUp() {
+
+    useEffect(() => {
+      document.title = 'Sign Up | Patchwork Foods';
+    }, []);
+    
   return (
     <div className="w-screen h-screen">
       <div className="h-full flex">
