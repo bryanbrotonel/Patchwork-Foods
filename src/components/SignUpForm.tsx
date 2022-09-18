@@ -3,16 +3,16 @@ import { SignUpContext } from '../context/SignUpContext';
 import { ShopContext } from '../context/ShopContext';
 
 function SignUpForm() {
-  const [emailInput, setEmailInput] = useState('');
-  const [postalCodeInput, setPostalCodeInput] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [postalCodeError, setPostalCodeError] = useState('');
-
   const useSignUpContext = useContext(SignUpContext);
   const useShopContext = useContext(ShopContext);
 
-  const { setEmail, setPostalCode } = useSignUpContext;
+  const { email, postalCode, setEmail, setPostalCode } = useSignUpContext;
   const { setDisplayShop } = useShopContext;
+
+  const [emailInput, setEmailInput] = useState(email);
+  const [postalCodeInput, setPostalCodeInput] = useState(postalCode);
+  const [emailError, setEmailError] = useState('');
+  const [postalCodeError, setPostalCodeError] = useState('');
 
   const onFormSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -20,6 +20,9 @@ function SignUpForm() {
     if (validForm) {
       setEmail(emailInput);
       setPostalCode(postalCodeInput);
+
+      console.log('email', emailInput);
+      console.log('postalCode', postalCodeInput);
       setDisplayShop(true);
     }
   };

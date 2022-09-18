@@ -11,6 +11,8 @@ lib/
 .vscode/
 .idea/
 *.min.js
+.netlify
+.env
 
 # Logs
 logs/
